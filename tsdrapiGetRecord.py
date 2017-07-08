@@ -23,6 +23,6 @@ def lambda_handler(event, context):
                multiDump = json.dumps(tsdrdata.TSDRMulti[str(event['params']['record-key'])],ensure_ascii=False)
                return multiDump
             except:
-               return "JSON key reference does not exist"
+               return "{\"Error\": \"JSON key reference does not exist\"}"
    else:
-      return "Could not parse trademark file. Please check status manually."
+      return "{\"Error\": \"Invalid TSDRData Object\"}"
