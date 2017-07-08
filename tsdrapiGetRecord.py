@@ -5,6 +5,7 @@ import json
 
 def lambda_handler(event, context):
    t = plumage.TSDRReq()
+   t.setPTOFormat("ST96")
    t.getTSDRInfo(str(event['params']['num']), str(event['params']['numtype']))   # get info on reg. no 2,564,831
    tsdrdata=t.TSDRData
 
