@@ -29,7 +29,8 @@
 </xsl:template>
 
 <xsl:template match="ns2:Trademark">
-<xsl:text/>DiagnosticInfoXSLTFilename,"$XSLTFILENAME$"<xsl:text/>
+<xsl:text/>DiagnosticXSLTTemplateNum,"ST.96"<xsl:text/>
+DiagnosticInfoXSLTFilename,"$XSLTFILENAME$"<xsl:text/>
 DiagnosticInfoXSLTLocation,"$XSLTLOCATION$"<xsl:text/>
 DiagnosticInfoXSLTVersion,"1.1.1"<xsl:text/>
 DiagnosticInfoXSLTDate,"2017-03-15"<xsl:text/>
@@ -70,6 +71,7 @@ RegistrationDateTruncated,"<xsl:value-of select="substring(ns1:RegistrationDate,
 <xsl:apply-templates select="ns2:ApplicantBag/ns2:Applicant"/>
 <xsl:apply-templates select="ns1:StaffBag/ns1:Staff"/>
 <xsl:apply-templates select="ns2:MarkEventBag/ns2:MarkEvent"/>
+<xsl:apply-templates select="ns2:GoodsServicesBag/ns2:GoodsServices"/>
 <xsl:apply-templates select="ns2:AssignmentBag/ns2:Assignment"/>
 </xsl:template>
 
@@ -178,6 +180,17 @@ ApplicantCountryCode,"<xsl:value-of select="ns1:CountryCode"/>"<xsl:text/>
 	ns1:PostalCode, '/',
 	ns1:CountryCode, '&quot;'
  	)"/>
+</xsl:template>
+
+<xsl:template match="ns2:GoodsServicesBag/ns2:GoodsServices">
+BeginRepeatedField,"GoodsServices"<xsl:text/>
+ClassNumber,"<xsl:value-of select="ns2:ClassDescriptionBag/ns2:ClassDescription/ns2:ClassNumber"/>"<xsl:text/>
+GoodsServicesDescription,"<xsl:value-of select="ns2:ClassDescriptionBag/ns2:ClassDescription/ns2:GoodsServicesDescriptionText"/>"<xsl:text/>
+ClassNumberStatusCode,"<xsl:value-of select="ns2:ClassDescriptionBag/ns2:ClassDescription/ns2:NationalStatusBag/ns2:NationalStatus/ns2:NationalStatusCode"/>"<xsl:text/>
+ClassNumberStatusDescription,"<xsl:value-of select="ns2:ClassDescriptionBag/ns2:ClassDescription/ns2:NationalStatusBag/ns2:NationalStatus/ns2:NationalStatusExternalDescriptionText"/>"<xsl:text/>
+FirstUseDate,"<xsl:value-of select="ns2:NationalFilingBasis/ns2:FirstUsedDate"/>"<xsl:text/>
+FirstUseInCommerceDate,"<xsl:value-of select="ns2:NationalFilingBasis/ns2:FirstUsedCommerceDate"/>"<xsl:text/>
+EndRepeatedField,"GoodsServices"<xsl:text/>
 </xsl:template>
 
 <xsl:template match="ns1:StaffBag/ns1:Staff">
